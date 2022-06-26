@@ -3,7 +3,8 @@ const {PORT} = process.env;
 
 const io = require ("socket.io")(PORT ,{
     cors:{
-        origin:"https://deploy-click-care.vercel.app"
+        origin:true,
+        Credential:true
     }
 });
 
