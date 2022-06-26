@@ -4,6 +4,7 @@ const {PORT} = process.env;
 const io = require ("socket.io")(PORT ,{
     cors:{
         origin:"localhost:3000",
+        credentials: true,
     }
 });
 
