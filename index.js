@@ -15,6 +15,7 @@ io.on("conection", (socket)=>{
  let users= [];
 
 const addUser = (userId, socketId) =>{
+    !users.some((user) => user.userId === userId) &&
     users.push({userId, socketId});
 }
 
@@ -23,7 +24,7 @@ const removeUser = (socketId) =>{
 }
 
 const getUser = (userId) => {
-    return users.filter((user) => user.userId === userId);
+    return users.find((user) => user.userId === userId);
   };
 
 
@@ -45,15 +46,10 @@ io.on("connection", (socket) => {
         console.log(user)
         console.log(senderId,
             text,)
-        user?.map((user)=>{
         io.to(user.socketId).emit("getMessage", {
           senderId,
           text,
-        })
-    
-    
-        }
-        )}
+        });}
         catch(err){
             console.log(err)
         }
